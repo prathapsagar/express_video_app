@@ -9,7 +9,7 @@ router.post('/signup',async(req,res)=>{
   const client = await MongoClient.connect(dbUrl)
   try {
     let db = await client.db("video_app");
-    let user = await db.collection('users').find({email:req.body.email})
+    let user = await db.collection("users").findOne({ email: req.body.email });
    
     if(user)
     {
